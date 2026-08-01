@@ -4,8 +4,7 @@ import torch
 from model import GPT
 
 
-def get_device() -> str:
-    """Return the best available computation device."""
+def get_device():
     if torch.cuda.is_available():
         return "cuda"
 
@@ -107,7 +106,7 @@ def main() -> None:
         tokenizer=tokenizer,
         prompt="AI systems can",
         device=device,
-        max_new_tokens=10,
+        max_new_tokens=50,
     )
 
     print("\nGenerated text:")
