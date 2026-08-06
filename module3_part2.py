@@ -60,7 +60,7 @@ values = x @ W_value
 scores = queries @ keys.transpose(-2, -1)
 scores = scores / math.sqrt(head_size)
 
-print("Original attention scores:\\n", scores)
+print("Original attention scores:\n", scores)
 
 # --------------------------------------------------
 # Create causal mask
@@ -74,7 +74,7 @@ mask = torch.tril(
     )
 )
 
-print("\\nCausal mask:\\n", mask)
+print("\nCausal mask:\n", mask)
 
 # --------------------------------------------------
 # Apply the mask
@@ -85,7 +85,7 @@ masked_scores = scores.masked_fill(
     float("-inf"),
 )
 
-print("\\nMasked attention scores:\\n", masked_scores)
+print("\nMasked attention scores:\n", masked_scores)
 
 # --------------------------------------------------
 # Softmax
@@ -96,13 +96,13 @@ attention_weights = torch.softmax(
     dim=-1,
 )
 
-print("\\nAttention weights after masking:\\n", attention_weights)
+print("\nAttention weights after masking:\n", attention_weights)
 
 # --------------------------------------------------
 # Verify row sums
 # --------------------------------------------------
 
-print("\\nRow sums:\\n", attention_weights.sum(dim=-1))
+print("\nRow sums:\n", attention_weights.sum(dim=-1))
 
 # --------------------------------------------------
 # Context vectors
@@ -110,4 +110,4 @@ print("\\nRow sums:\\n", attention_weights.sum(dim=-1))
 
 context = attention_weights @ values
 
-print("\\nContext vectors:\\n", context)
+print("\nContext vectors:\n", context)
