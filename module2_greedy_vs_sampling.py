@@ -6,7 +6,7 @@ from model import GPT
 
 def get_device():
     if torch.cuda.is_available():
-        return "cude"
+        return "cuda"
     if torch.backends.mps.is_available():
         return "mps"
 
