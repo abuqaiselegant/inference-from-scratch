@@ -12,7 +12,7 @@ torch.manual_seed(3)
 batch_size = 1
 sequence_length = 4
 embedding_size = 6
-head_size = 3
+head_size = 8
 
 # creating artificial token embeddings
 x = torch.randn(
@@ -105,3 +105,7 @@ context = attention_weights @ values
 
 print("\nContext shape:", context.shape)
 print("Contextual token representations:\n", context)
+
+first_token_weights = attention_weights[0, 0]
+print("first_token_weights: ", first_token_weights)
+print("first_token_weights shape: ", first_token_weights.shape)
